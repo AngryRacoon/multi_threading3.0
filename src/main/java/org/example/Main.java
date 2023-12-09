@@ -5,13 +5,22 @@ import java.util.concurrent.ForkJoinPool;
 
 public class Main {
     public static void main(String[] args) {
-        int N = 7;
-        int[][] matrix = new int[N][N];
+        int N = 15;
+        long[][] matrix = new long[N][N];
 
-        int[][] matrix2 = {
+        long[][] matrix2 = {
                 {99, 2, 3},
                 {99, 99, 3},
                 {24, 45, 66},
+
+        };
+        long[][] matrix3 = {
+                {99, 2, 3,1,75,30},
+                {99, 99, 3,12,56,77},
+                {24, 45, 66,68,9,2},
+                {24, 45, 75,4,64,37},
+                {24, 45, 75,4,45,45},
+                {24, 34, 75,4,23,13},
 
         };
 
@@ -19,7 +28,7 @@ public class Main {
         Random rand = new Random();
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                matrix[i][j] = rand.nextInt(100);
+                matrix[i][j] = rand.nextLong(10);
             }
         }
 
@@ -41,7 +50,7 @@ public class Main {
 
         // Вызываем ForkJoinPool, чтобы выполнить задачу
 
-        int det = forkJoinPool.invoke(task);
+        long det = forkJoinPool.invoke(task);
         forkJoinPool.shutdown();
         endTime = System.currentTimeMillis();
         duration = endTime - startTime;

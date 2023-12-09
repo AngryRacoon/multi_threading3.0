@@ -6,9 +6,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MatrixDeterminant {
 
-    private static final Map<String, Integer> cache = new ConcurrentHashMap<>();
+    private static final Map<String, Long> cache = new ConcurrentHashMap<>();
     // Функция для вычисления определителя матрицы
-    public int determinant(int[][] matrix) {
+    public long determinant(long[][] matrix) {
         String key = Arrays.deepToString(matrix);
         if (cache.containsKey(key)) {
             return cache.get(key);
@@ -20,11 +20,11 @@ public class MatrixDeterminant {
             return matrix[0][0];
         }
 
-        int det = 0;
+        long det = 0;
         // Рекурсивно вычисляем определитель для каждого элемента первой строки
         for (int i = 0; i < n; i++) {
             // Вычисляем минор для текущего элемента
-            int[][] minor = getMinor(matrix, 0, i);
+            long[][] minor = getMinor(matrix, 0, i);
             // Рекурсивно вычисляем определитель минора и обновляем значение определителя матрицы
             det += Math.pow(-1, i) * matrix[0][i] * determinant(minor);
         }
@@ -34,9 +34,9 @@ public class MatrixDeterminant {
     }
 
     // Функция для получения минора матрицы без указанной строки и столбца
-    public static int[][] getMinor(int[][] matrix, int row, int col) {
+    public static long[][] getMinor(long[][] matrix, int row, int col) {
         int n = matrix.length;
-        int[][] minor = new int[n - 1][n - 1];
+        long[][] minor = new long[n - 1][n - 1];
         int minorRow = 0, minorCol = 0;
         for (int i = 0; i < n; i++) {
             if (i != row) {
