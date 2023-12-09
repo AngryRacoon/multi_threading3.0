@@ -5,7 +5,7 @@ import java.util.concurrent.ForkJoinPool;
 
 public class Main {
     public static void main(String[] args) {
-        int N = 12;
+        int N = 7;
         int[][] matrix = new int[N][N];
 
         int[][] matrix2 = {
@@ -19,7 +19,7 @@ public class Main {
         Random rand = new Random();
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                matrix[i][j] = rand.nextInt(10);
+                matrix[i][j] = rand.nextInt(100);
             }
         }
 
